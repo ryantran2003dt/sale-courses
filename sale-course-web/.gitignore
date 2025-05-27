@@ -33,5 +33,5 @@ build/
 .vscode/
 # Ignore sensitive config files
 sale-course-web/src/main/resources/application-dev.properties
-sale-course-web/src/main/resources/application.properties
+sale-course-web/src/main/resources/application-prod.properties
 

@@ -65,4 +65,10 @@ public class StudentEntity {
 
     @Column(name = "PROVIDER_ID", nullable = false)
     private Long providerId;
+
+    public StudentEntity(String firstName, String lastName, String email, String pictureUrl) {
+        this.fullName = firstName + " " + lastName;
+        this.email = email;
+        this.avatarUrl = pictureUrl;
+    }
 }

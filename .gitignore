@@ -32,3 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 sale-course-web/src/main/resources/application-dev.properties
+sale-course-web/src/main/resources/application-prod.properties

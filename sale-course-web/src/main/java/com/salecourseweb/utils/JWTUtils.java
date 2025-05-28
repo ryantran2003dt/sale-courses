@@ -32,7 +32,9 @@ public class JWTUtils {
         long now = (new Date()).getTime();
         Date validity = rememberMe ? new Date(now + TOKEN_VALIDITY_REMEMBER) : new Date(now + TOKEN_VALIDITY);
         Map<String, Object> claims = new HashMap<>();
-        claims.put("role", account.getFullName());
+        claims.put("Full Name", account.getFullName());
+        claims.put("jti", account.getId());
+        claims.put("Email", account.getEmail());
 
         return Jwts.builder()
                 .setSubject(account.getId().toString())

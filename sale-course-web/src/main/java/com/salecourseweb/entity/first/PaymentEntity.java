@@ -16,12 +16,14 @@ import lombok.Setter;
 public class PaymentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "ID")
     private Long id;
-    @Column(name = "PAYMET_NAME", length = 255)
+    @Column(name = "PAYMET_NAME")
     private String paymentName;
-    @Column(name = "DESCRIPTION", length = 255)
+    @Column(name = "DESCRIPTION")
     private String description;
-    @Column(name = "STATUS", nullable = false)
+    @Column(name = "IMG_URL")
+    private String imgUrl;
+    @Column(name = "STATUS")
     private int status;
 }

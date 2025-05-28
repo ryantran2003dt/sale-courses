@@ -63,6 +63,9 @@ public class StudentEntity {
     @Column(name = "PROVIDER_ID")
     private Long providerId;
 
+    @Column(name = "ROLE_ID")
+    private Long roleId;
+
     public StudentEntity(String firstName, String lastName, String email, String pictureUrl) {
         this.fullName = firstName + " " + lastName;
         this.email = email;

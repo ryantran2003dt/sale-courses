@@ -17,20 +17,27 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(UrlConst.AUTH)
+@RequestMapping(UrlConst.OAUTH)
 public class AuthCotroller {
     private final AuthService authService;
 
     @PostMapping("/login")
     public ResponseEntity LoginWithGoogleOauth2(@RequestBody IdTokenRequest requestBody, HttpServletResponse response) {
-        String authToken = authService.loginOAuthGoogle(requestBody);
-        final ResponseCookie cookie = ResponseCookie.from("AUTH-TOKEN", authToken)
-                .httpOnly(true)
-                .maxAge(7 * 24 * 3600)
-                .path("/")
-                .secure(false)
-                .build();
-        response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
-        return ResponseEntity.ok().build();
+        try{
+            log.info("-------------- "+requestBody);
+            String authToken = authService.loginOAuthGoogle(requestBody);
+            final ResponseCookie cookie = ResponseCookie.from("AUTH-TOKEN", authToken)
+                    .httpOnly(true)
+                    .maxAge(7 * 24 * 3600)
+                    .path("/")
+                    .secure(false)
+                    .build();
+            response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+            log.info("[Token] "+ authToken);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            log.error("[ERROR] " + e.getMessage());
+            return ResponseEntity.ok().build();
+        }
     }
 }

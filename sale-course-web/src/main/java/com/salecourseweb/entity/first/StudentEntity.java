@@ -19,51 +19,48 @@ public class StudentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false, length = 100)
+    @Column(name = "ID")
     private Long id;
 
-    @Column(name = "FULLNAME", nullable = false, length = 100)
+    @Column(name = "FULLNAME")
     private String fullName;
 
-    @Column(name = "GENDER", length = 10)
+    @Column(name = "GENDER")
     private int gender;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "DOB")
     private Date dob;
 
-    @Column(name = "ADDRESS", length = 255)
+    @Column(name = "ADDRESS")
     private String address;
 
-    @Column(name = "PHONE", length = 20)
+    @Column(name = "PHONE")
     private String phone;
 
-    @Column(name = "EMAIL", length = 100, unique = true)
+    @Column(name = "EMAIL", unique = true)
     private String email;
 
-    @Column(name = "PASSWORD", length = 255)
+    @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "AVATAR_URL", length = 255)
+    @Column(name = "AVATAR_URL")
     private String avatarUrl;
 
-    @Column(name = "GUARDIAN_NAME", length = 100)
+    @Column(name = "GUARDIAN_NAME")
     private String guardianName;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "CREATE_DATE", nullable = false)
+    @Column(name = "CREATE_DATE")
     private Date createDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "UPDATE_DATE")
     private Date updateDate;
 
-    @Column(name = "STATUS", nullable = false)
+    @Column(name = "STATUS")
     private int status;
-    @Column(name ="EMAIL_VERIFIED",nullable = false)
+    @Column(name ="EMAIL_VERIFIED")
     private Boolean emailVerified = false;
 
-    @Column(name = "PROVIDER_ID", nullable = false)
+    @Column(name = "PROVIDER_ID")
     private Long providerId;
 
     public StudentEntity(String firstName, String lastName, String email, String pictureUrl) {

@@ -13,6 +13,8 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Service
@@ -53,11 +55,13 @@ public class AuthServiceImpl implements AuthService {
     public StudentEntity createOrUpdateUser(StudentEntity account) {
         StudentEntity existingAccount = studentRepository.findByEmail(account.getEmail()).orElse(null);
         if (existingAccount == null) {
+            account.setCreateDate(new Date());
             studentRepository.save(account);
             return account;
         }
         existingAccount.setFullName(account.getFullName());
         existingAccount.setAvatarUrl(account.getAvatarUrl());
+        existingAccount.setCreateDate(new Date());
         studentRepository.save(existingAccount);
         return existingAccount;
     }
